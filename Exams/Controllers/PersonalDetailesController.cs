@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Exam_DTO.DTO;
+using ExamBL;
+using ExamDL.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ExamsDL.Models;
-
-using ExamsBL;
-using Dto_Exams.DTO;
 
 namespace Exams.Contoller
 {
