@@ -1,3 +1,7 @@
+using Exam_DTO;
+using ExamBL;
+using ExamDL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(AutoMapping));
+builder.Services.AddScoped<IPersonalDetailesRepository, PersonalDetailesRepository>();
+builder.Services.AddScoped<IPersonalDetailesService, PersonalDetailesService>();
 
 var app = builder.Build();
 

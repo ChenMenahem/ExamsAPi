@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExamDL\ExamDL.csproj" />
-    <ProjectReference Include="..\Exam_DTO\Exam_DTO.csproj" />
   </ItemGroup>
 
 </Project>

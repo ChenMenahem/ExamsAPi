@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exams", "Exams\Exams.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamBL", "ExamBL\ExamBL.csproj", "{79BFE853-A3A6-4FEB-A518-4D2AE85BC280}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamDL", "ExamDL\ExamDL.csproj", "{FCA98871-E63C-4AA3-BA9B-7D54F634D6DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam_DTO", "Exam_DTO\Exam_DTO.csproj", "{9ACD23E0-75ED-47AC-9EBA-158A63DF7900}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{79BFE853-A3A6-4FEB-A518-4D2AE85BC280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BFE853-A3A6-4FEB-A518-4D2AE85BC280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BFE853-A3A6-4FEB-A518-4D2AE85BC280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA98871-E63C-4AA3-BA9B-7D54F634D6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA98871-E63C-4AA3-BA9B-7D54F634D6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA98871-E63C-4AA3-BA9B-7D54F634D6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA98871-E63C-4AA3-BA9B-7D54F634D6DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ACD23E0-75ED-47AC-9EBA-158A63DF7900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACD23E0-75ED-47AC-9EBA-158A63DF7900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACD23E0-75ED-47AC-9EBA-158A63DF7900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACD23E0-75ED-47AC-9EBA-158A63DF7900}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
