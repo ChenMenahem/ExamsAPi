@@ -11,7 +11,7 @@ namespace ExamDL
     public class ReliefUserService : IReliefUserService
     {
         ExamsContext _Relief = new ExamsContext();
-
+        //פוקצית GET
         public async Task<List<ReliefUser>> GetAllPersonRelief(int userId)
         {
             try
