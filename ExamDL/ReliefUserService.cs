@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExamDL.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamDL
 {
-    internal class ReliefUserService : IReliefUserService
+    public class ReliefUserService : IReliefUserService
     {
         ExamsContext _Relief = new ExamsContext();
 

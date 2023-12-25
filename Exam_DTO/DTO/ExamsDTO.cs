@@ -21,5 +21,6 @@ namespace Exam_DTO.DTO
         public string Time { get; set; } = null!;
 
         public double Cost { get; set; }
+        //yuiyuyiuyi
     }
 }

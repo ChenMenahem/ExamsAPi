@@ -17,6 +17,7 @@ namespace Exam_DTO
             //CreateMap<ExamsRepository, ExamsDto>();
             CreateMap<PersonalDetaileDTO, PersonalDetaile>();
             CreateMap<PersonalDetaile, PersonalDetaileDTO>();
+<<<<<<< HEAD
             CreateMap<ExamsDTO, Exam>();
             CreateMap<Exam, ExamsDTO>();
             CreateMap<ExamsUserDTO, ExamsUser>();
@@ -28,6 +29,8 @@ namespace Exam_DTO
 
 
 
+=======
+>>>>>>> 9827d0ded7f5d37f5a568789b692ca7bec9bc523
 
         }
 

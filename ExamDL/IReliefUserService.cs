@@ -1,6 +1,7 @@
-﻿namespace ExamDL
+﻿using ExamDL.Models;
+namespace ExamDL
 {
-    internal interface IReliefUserService
+    public interface IReliefUserService
     {
         Task<global::System.Boolean> AddRealif(ReliefUser Reliefuser);
         Task<List<ReliefUser>> GetAllPersonRelief(global::System.Int32 userId);
