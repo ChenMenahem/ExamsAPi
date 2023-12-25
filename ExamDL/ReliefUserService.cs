@@ -12,36 +12,74 @@ namespace ExamDL
     {
         ExamsContext _Relief = new ExamsContext();
 
-
-        public async Task<List<ReliefUser>> GetAllPersonRelief(int userId)//מחזירה את כל ההקלות של בן אדם מסויים
+        public async Task<List<ReliefUser>> GetAllPersonRelief(int userId)
         {
-            List<ReliefUser> result = await _Relief.ReliefUsers
-                 .Where(u => u.IdUser == userId)
-                  .ToListAsync();
-            return result;
+            try
+            {
+                List<ReliefUser> result = await _Relief.ReliefUsers
+                    .Where(u => u.IdUser == userId)
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"An error occurred while fetching relief data: {ex.Message}");
+                
+                throw;
+            }
         }
         public async Task<List<ReliefType>> GetAllReliefType()
         {
-            List<ReliefType> result = await _Relief.ReliefTypes
-                 .ToListAsync();
-            return result;
+            try
+            {
+                List<ReliefType> result = await _Relief.ReliefTypes
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+            
+                Console.WriteLine($"An error occurred while fetching relief types: {ex.Message}");
+              
+                throw;
+            }
         }
 
         public async Task<List<ReliefReason>> GetallReliefReason()
         {
-            List<ReliefReason> result = await _Relief.ReliefReasons
-                 .ToListAsync();
-            return result;
+            try
+            {
+                List<ReliefReason> result = await _Relief.ReliefReasons
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+            
+                Console.WriteLine($"An error occurred while fetching relief reasons: {ex.Message}");
+               
+                throw;
+            }
         }
 
         public async Task<bool> AddRealif(ReliefUser Reliefuser)
         {
+            try
             {
                 var Relief = await _Relief.ReliefUsers.AddAsync(Reliefuser);
-                _Relief.SaveChanges();
+                await _Relief.SaveChangesAsync();
                 return true;
             }
-
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"An error occurred while adding relief: {ex.Message}");
+              
+                throw;
+            }
         }
+
+     
     }
 }

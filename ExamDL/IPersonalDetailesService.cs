@@ -1,6 +1,4 @@
 ﻿using ExamDL.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ExamDL
 {
@@ -8,7 +6,7 @@ namespace ExamDL
     {
         Task<bool> Add(PersonalDetaile personalDetaile);
         Task<List<PersonalDetaile>> GetAllPersonalDetails();
-        Task<List<PersonalDetaile>> GetAllPersonDetailsById(int iduser);
+        Task<PersonalDetaile> GetAllPersonDetailsById(int iduser);
         Task<bool> Update(PersonalDetaile personalDetaile);
     }
 }

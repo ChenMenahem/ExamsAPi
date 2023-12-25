@@ -12,21 +12,42 @@ namespace ExamDL
     {
         ExamsContext _ExamsContext = new ExamsContext();
 
-
-        public List<ExamsUser> GetAllExamsForUser(int userId)
+        public async Task<List<ExamsUser>> GetAllExamsForUser(int userId)
         {
-            List<ExamsUser> result = _ExamsContext.ExamsUsers
-                 .Where(u => u.IdUser == userId)
-                 .ToList();
-            return result;
-        }
-        public bool Add(ExamsUser examsUser)
+            try
+            {
+                List<ExamsUser> result = await _ExamsContext.ExamsUsers
+                    .Where(u => u.IdUser == userId)
+                    .ToListAsync();
 
-        {
-            _ExamsContext.ExamsUsers.Add(examsUser);
-            _ExamsContext.SaveChanges();
-            return true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching exams for user: {ex.Message}");
+
+                throw;
+            }
         }
+
+        public async Task<bool> Add(ExamsUser examsUser)
+        {
+            try
+            {
+                _ExamsContext.ExamsUsers.Add(examsUser);
+                await _ExamsContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while adding an exams user: {ex.Message}");
+
+                throw;
+            }
+        }
+
 
     }
 }
