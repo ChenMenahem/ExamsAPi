@@ -12,23 +12,44 @@ namespace ExamDL
     {
         ExamsContext _examsContext = new ExamsContext();
 
+    
+
         public async Task<List<Exam>> GetExams()
         {
-            List<Exam> result = await _examsContext.Exams
-                 .ToListAsync();
-            return result;
+            try
+            {
+                List<Exam> result = await _examsContext.Exams
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"An error occurred while fetching exams: {ex.Message}");
+          
+                throw;
+            }
         }
 
 
 
         public async Task<List<Exam>> GetAllPersonExams(int Idexam)
         {
-            List<Exam> result = await _examsContext.Exams
-                 .Where(u => u.IdExam == Idexam)
-                 .ToListAsync();
-            return result;
+            try
+            {
+                List<Exam> result = await _examsContext.Exams
+                    .Where(u => u.IdExam == Idexam)
+                    .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+              
+                Console.WriteLine($"An error occurred while fetching person exams: {ex.Message}");
+           
+                throw;
+            }
         }
-
 
     }
 }

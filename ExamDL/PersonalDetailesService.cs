@@ -13,29 +13,49 @@ namespace ExamDL
         ExamsContext _personalDetails = new ExamsContext();
 
 
-        public async Task<List<PersonalDetaile>> GetAllPersonDetailsById(int iduser)
+        public async Task<PersonalDetaile> GetAllPersonDetailsById(int iduser)
         {
-            List<PersonalDetaile> result = await _personalDetails.PersonalDetailes
-                 .Where(u => u.IdUser == iduser)
-                 .ToListAsync();
-            return result;
+            try
+            {
+                PersonalDetaile result = await _personalDetails.PersonalDetailes
+                     .Where(u => u.IdUser == iduser)
+                     .FirstOrDefaultAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching personal details by ID: {ex.Message}");
+
+                throw;
+            }
         }
-        
 
 
         public async Task<List<PersonalDetaile>> GetAllPersonalDetails()
         {
-            List<PersonalDetaile> result = await _personalDetails.PersonalDetailes
+            try
+            {
+                List<PersonalDetaile> result = await _personalDetails.PersonalDetailes
                      .ToListAsync();
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching personal details: {ex.Message}");
+
+                throw;
+            }
         }
-        //
+
         public async Task<bool> Add(PersonalDetaile personalDetaile)
         {
             try
             {
                 await _personalDetails.PersonalDetailes.AddAsync(personalDetaile);
                 _personalDetails.SaveChanges();
+                //שליפה של האוביקט האחרון שהוכנס
                 return true;
             }
             catch (Exception ex)
@@ -44,22 +64,32 @@ namespace ExamDL
                 return false;
             }
         }
-
         public async Task<bool> Update(PersonalDetaile personalDetaile)
-
         {
-            PersonalDetaile existingPerson = _personalDetails.PersonalDetailes.FirstOrDefault(x => x.IdUser == personalDetaile.IdUser);
-
-            if (existingPerson != null)
+            try
             {
-                existingPerson.City = personalDetaile.City;
-                _personalDetails.Update(existingPerson);
+                PersonalDetaile existingPerson = _personalDetails.PersonalDetailes.FirstOrDefault(x => x.IdUser == personalDetaile.IdUser);
 
-                await _personalDetails.SaveChangesAsync();
+                if (existingPerson != null)
+                {
+                    existingPerson.City = personalDetaile.City;
+                    _personalDetails.Update(existingPerson);
+
+                    await _personalDetails.SaveChangesAsync();
+                }
+
+                return true;
             }
+            catch (Exception ex)
+            {
 
-            return true;
+                Console.WriteLine($"An error occurred during update: {ex.Message}");
+
+                throw;
+            }
         }
+
+
 
     }
 }
