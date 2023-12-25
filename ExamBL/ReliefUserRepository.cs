@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Exam_DTO.DTO;
+using ExamDL.Models;
+using AutoMapper;
+using ExamDL;
+
 
 namespace ExamBL
 {
-    class ReliefUserRepository : IReliefUserRepository
+   public class ReliefUserRepository : IReliefUserRepository
     {
         IRelief_UsersService _ReliefDL;
 

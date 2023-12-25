@@ -3,22 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Exam_DTO.DTO;
+using ExamDL;
+using ExamDL.Models;
+
 
 namespace ExamBL
 {
     class ExamsUserRepository : IExamsUserRepository
     {
-        IExams_UsersService _ExamsUsersDL;
+        IExamsUserService _ExamsUsersDL;
+        IMapper _mapper;
 
-        public Exams_UsersRepository(IExams_UsersService examUserDL)
+        public ExamsUserRepository(IExamsUserService examUserDL)
         {
             _ExamsUsersDL = examUserDL;
+            IMapper _mapper;
         }
 
-        public Exams_UsersRepository()
-        {
-            _ExamsUsersDL = new Exams_UsersService();
-        }
+        
 
 
         public List<ExamsUser> GetAllExamsForUserBL(int userId)

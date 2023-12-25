@@ -20,7 +20,7 @@ namespace ExamDL
                  .ToListAsync();
             return result;
         }
-
+        
 
 
         public async Task<List<PersonalDetaile>> GetAllPersonalDetails()

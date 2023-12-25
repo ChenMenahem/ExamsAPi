@@ -22,10 +22,6 @@ namespace ExamBL
             _mapper = mapper;
 
         }
-        public PersonalDetailesRepository()
-        {
-            _PersonalDetailsDL = new PersonalDetailesService();
-        }
 
         public async Task<List<PersonalDetaile>> GetAllPersonDetailsByIdBl(int iduser)
         {

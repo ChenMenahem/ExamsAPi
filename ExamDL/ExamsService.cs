@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExamDL.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamDL
 {
-    internal class ExamsService : IExamsService
+    public class ExamsService : IExamsService
     {
         ExamsContext _examsContext = new ExamsContext();
 
