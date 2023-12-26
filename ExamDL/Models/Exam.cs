@@ -21,7 +21,3 @@ public partial class Exam
 
     public virtual ICollection<ExamsUser> ExamsUsers { get; set; } = new List<ExamsUser>();
 }
-<<<<<<< HEAD
-}
-=======
->>>>>>> 9827d0ded7f5d37f5a568789b692ca7bec9bc523

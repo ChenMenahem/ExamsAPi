@@ -12,6 +12,7 @@ namespace ExamDL
     {
         ExamsContext _ExamsContext = new ExamsContext();
 
+
         public async Task<List<ExamsUser>> GetAllExams()
         {
             List<ExamsUser> result = await _ExamsContext.ExamsUsers
@@ -20,7 +21,7 @@ namespace ExamDL
         }
 
 
-        public List<ExamsUser> GetAllExamsForUser(int userId)
+        public async Task <List<ExamsUser>> GetAllExamsForUser(int userId)
         {
             try
             {

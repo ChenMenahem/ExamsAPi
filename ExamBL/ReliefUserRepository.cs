@@ -11,19 +11,19 @@ using ExamDL;
 
 namespace ExamBL
 {
-   public class ReliefUserRepository : IReliefUserRepository
+    public class ReliefUserRepository : IReliefUserRepository
     {
-        IRelief_UsersService _ReliefDL;
+        IReliefUserService _ReliefDL;
 
-        public Relief_UsersRepository(IRelief_UsersService reliefDL)
+        public ReliefUserRepository(IReliefUserService reliefDL)
         {
             _ReliefDL = reliefDL;
         }
 
 
-        public Relief_UsersRepository()
+        public ReliefUserRepository()
         {
-            _ReliefDL = new Relief_UsersService();
+            _ReliefDL = new ReliefUserService();
         }
 
 

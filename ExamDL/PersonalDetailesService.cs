@@ -30,6 +30,23 @@ namespace ExamDL
                 throw;
             }
         }
+        //public async Task<PersonalDetaile> GetByPermision(int permission)
+        //{
+        //    try
+        //    {
+        //        PersonalDetaile result = await _personalDetails.PersonalDetailes
+        //             .Where(u => u.IdUser == iduser)
+        //             .FirstOrDefaultAsync();
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        Console.WriteLine($"An error occurred while fetching personal details by ID: {ex.Message}");
+
+        //        throw;
+        //    }
+        //}
 
 
         public async Task<List<PersonalDetaile>> GetAllPersonalDetails()
