@@ -22,31 +22,65 @@ namespace ExamBL
             _mapper = mapper;
 
         }
-
         public async Task<List<PersonalDetaile>> GetAllPersonDetailsByIdBl(int iduser)
         {
-            List<PersonalDetaile> currentUser = await _PersonalDetailsDL.GetAllPersonDetailsById(iduser);
-            return currentUser;
+            try
+            {
+                List<PersonalDetaile> currentUser = await _PersonalDetailsDL.GetAllPersonDetailsById(iduser);
+                return currentUser;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error in GetAllPersonDetailsByIdBl: {ex.Message}");
+                return null; 
+            }
         }
         public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsBL()
         {
-            List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalDetails();
-            List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
-            return pdDTO;
+            try
+            {
+                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalDetails();
+                List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
+                return pdDTO;
+            }
+            catch (Exception ex)
+            {
+        
+                Console.WriteLine($"Error in GetAllPersonalDetailsBL: {ex.Message}");
+                return null; 
+            }
         }
-
 
         public async Task<bool> AddPersonalDelailesBL(PersonalDetaileDTO Id_User)
         {
-            PersonalDetaile pd = _mapper.Map<PersonalDetaile>(Id_User);
-            bool isAddPersonalDetails = await _PersonalDetailsDL.Add(pd);
-            return isAddPersonalDetails;
+            try
+            {
+                PersonalDetaile pd = _mapper.Map<PersonalDetaile>(Id_User);
+                bool isAddPersonalDetails = await _PersonalDetailsDL.Add(pd);
+                return isAddPersonalDetails;
+            }
+            catch (Exception ex)
+            {
+            
+                Console.WriteLine($"Error in AddPersonalDelailesBL: {ex.Message}");
+                return false; 
+            }
         }
 
         public async Task<bool> UpdatePersonalDetailesBL(PersonalDetaile Id_User)
         {
-            bool isUpdatePersonalDetailes = await _PersonalDetailsDL.Update(Id_User);
-            return isUpdatePersonalDetailes;
+            try
+            {
+                bool isUpdatePersonalDetailes = await _PersonalDetailsDL.Update(Id_User);
+                return isUpdatePersonalDetailes;
+            }
+            catch (Exception ex)
+            {
+         
+                Console.WriteLine($"Error in UpdatePersonalDetailesBL: {ex.Message}");
+                return false; 
+            }
         }
     }
 

@@ -1,8 +1,10 @@
-﻿namespace ExamBL
+﻿using ExamDL.Models;
+
+namespace ExamBL
 {
-    interface IExamsUserRepository
+    internal interface IExamsUserRepository
     {
-        global::System.Boolean Add(ExamsUser examsUser);
-        List<ExamsUser> GetAllExamsForUserBL(global::System.Int32 userId);
+        Task<bool> Add(ExamsUser examsUser);
+        Task<List<ExamsUser>> GetAllExamsForUserBL(int userId);
     }
 }

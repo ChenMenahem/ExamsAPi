@@ -26,27 +26,63 @@ namespace ExamBL
             _ReliefDL = new ReliefUserService();
         }
 
-
         public async Task<List<ReliefUser>> GetAllPersonReliefBL(int userId)
         {
-            List<ReliefUser> relief = await _ReliefDL.GetAllPersonRelief(userId);
-            return relief;
+            try
+            {
+                List<ReliefUser> relief = await _ReliefDL.GetAllPersonRelief(userId);
+                return relief;
+            }
+            catch (Exception ex)
+            {
+               
+                Console.WriteLine($"Error in GetAllPersonReliefBL: {ex.Message}");
+                return new List<ReliefUser>(); 
+            }
         }
+
         public async Task<List<ReliefType>> GetAllReliefTypeBL()
         {
-            List<ReliefType> reliefType = await _ReliefDL.GetAllReliefType();
-            return reliefType;
+            try
+            {
+                List<ReliefType> reliefType = await _ReliefDL.GetAllReliefType();
+                return reliefType;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllReliefTypeBL: {ex.Message}");
+                return new List<ReliefType>(); 
+            }
         }
         public async Task<List<ReliefReason>> GetallReliefReasonBL()
         {
-            List<ReliefReason> reliefReason = await _ReliefDL.GetallReliefReason();
-            return reliefReason;
+            try
+            {
+                List<ReliefReason> reliefReason = await _ReliefDL.GetallReliefReason();
+                return reliefReason;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error in GetallReliefReasonBL: {ex.Message}");
+                return new List<ReliefReason>(); 
+            }
         }
         public async Task<bool> AddRealif_UserBL(ReliefUser Reliefuser)
         {
-            bool isAdd = await _ReliefDL.AddRealif(Reliefuser);
-            return isAdd;
+            try
+            {
+                bool isAdd = await _ReliefDL.AddRealif(Reliefuser);
+                return isAdd;
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"Error in AddRealif_UserBL: {ex.Message}");
+                return false; 
+            }
         }
+
     }
 }
 

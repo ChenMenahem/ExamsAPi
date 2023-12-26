@@ -22,19 +22,38 @@ namespace ExamBL
             IMapper _mapper;
         }
 
-        
+        public async Task<List<ExamsUser>> GetAllExamsForUserBL(int userId)
+        {
+            try
+            {
+                List<ExamsUser> ExamsForUser = await _ExamsUsersDL.GetAllExamsForUser(userId);
+                return ExamsForUser;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllExamsForUserBL: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task<bool> Add(ExamsUser examsUser)
+        {
+            try
+            {
+                bool isAdd = await _ExamsUsersDL.Add(examsUser);
+                return isAdd;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Add: {ex.Message}");
+                return false;
+            }
+        }
 
 
-        public List<ExamsUser> GetAllExamsForUserBL(int userId)
-        {
-            List<ExamsUser> ExamsForUser = _ExamsUsersDL.GetAllExamsForUser(userId);
-            return ExamsForUser;
-        }
-        public bool Add(ExamsUser examsUser)
-        {
-            bool isAdd = _ExamsUsersDL.Add(examsUser);
-            return isAdd;
-        }
+
+
+
     }
 }
 

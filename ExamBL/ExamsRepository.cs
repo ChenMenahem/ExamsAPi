@@ -17,24 +17,43 @@ namespace ExamBL
     {
         IExamsService _ExamsDL;
         IMapper _mapper;
-
         public ExamsRepository(IExamsService examDL, IMapper mapper)
         {
             _ExamsDL = examDL;
             _mapper = mapper;
         }
 
-
         public async Task<List<Exam>> GetExamsBl()
         {
-            List<Exam> exams = await _ExamsDL.GetExams();
-            return exams;
+            try
+            {
+                List<Exam> exams = await _ExamsDL.GetExams();
+                return exams;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetExamsBl: {ex.Message}");
+                return null;
+            }
         }
+
         public async Task<List<Exam>> GetAllPersonExamsBL(int Idexam)
         {
-            List<Exam> relief = await _ExamsDL.GetAllPersonExams(Idexam);
-            return relief;
+            try
+            {
+                List<Exam> relief = await _ExamsDL.GetAllPersonExams(Idexam);
+                return relief;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllPersonExamsBL: {ex.Message}");
+                return null; 
+            }
         }
+
+        
+
+     
     }
 
 }
