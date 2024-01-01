@@ -15,8 +15,6 @@ public partial class ExamsContext : DbContext
     {
     }
 
-    public virtual DbSet<Employee> Employees { get; set; }
-
     public virtual DbSet<Exam> Exams { get; set; }
 
     public virtual DbSet<ExamsUser> ExamsUsers { get; set; }
@@ -33,23 +31,10 @@ public partial class ExamsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-GGJUHG9;Database=Exams;Trusted_Connection=True;TrustServerCertificate=True\n;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-GGJUHG9;Database=Exams;TrustServerCertificate=True;Trusted_Connection=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Employee>(entity =>
-        {
-            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
-            entity.Property(e => e.Email).HasMaxLength(20);
-            entity.Property(e => e.IdPermissions).HasColumnName("Id_Permissions");
-            entity.Property(e => e.Password).HasMaxLength(20);
-
-            entity.HasOne(d => d.IdPermissionsNavigation).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.IdPermissions)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Employees__Id_Pe__31EC6D26");
-        });
-
         modelBuilder.Entity<Exam>(entity =>
         {
             entity.HasKey(e => e.IdExam);
@@ -115,6 +100,10 @@ public partial class ExamsContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("Url_Files_id");
             entity.Property(e => e.UserPassword).HasMaxLength(30);
+
+            entity.HasOne(d => d.PermissionNavigation).WithMany(p => p.PersonalDetailes)
+                .HasForeignKey(d => d.Permission)
+                .HasConstraintName("FK_PersonalDetailes_Permission");
         });
 
         modelBuilder.Entity<ReliefReason>(entity =>

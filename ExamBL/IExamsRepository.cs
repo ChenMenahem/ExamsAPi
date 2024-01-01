@@ -1,10 +1,10 @@
-﻿using ExamDL.Models;
+﻿using Exam_DTO.DTO;
 
 namespace ExamBL
 {
     public interface IExamsRepository
     {
-        Task<List<Exam>> GetAllPersonExamsBL(int Idexam);
-        Task<List<Exam>> GetExamsBl();
+        Task<ExamsDTO> GetExamsById(int Idexam);
+        Task<List<ExamsDTO>> GetExamsBl();
     }
 }

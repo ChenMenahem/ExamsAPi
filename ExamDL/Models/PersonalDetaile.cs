@@ -37,7 +37,11 @@ public partial class PersonalDetaile
 
     public string UserPassword { get; set; } = null!;
 
+    public int? Permission { get; set; }
+
     public virtual ICollection<ExamsUser> ExamsUsers { get; set; } = new List<ExamsUser>();
+
+    public virtual Permission? PermissionNavigation { get; set; }
 
     public virtual ICollection<ReliefUser> ReliefUsers { get; set; } = new List<ReliefUser>();
 }

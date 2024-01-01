@@ -1,10 +1,11 @@
-﻿using ExamDL.Models;
+﻿using Exam_DTO.DTO;
 
 namespace ExamBL
 {
-    internal interface IExamsUserRepository
+    public interface IExamsUserRepository
     {
-        Task<bool> Add(ExamsUser examsUser);
-        Task<List<ExamsUser>> GetAllExamsForUserBL(int userId);
+        Task<ExamsUserDTO> Add(ExamsUserDTO examsUser);
+        Task<List<ExamsUserDTO>> GetAllExamsBL();
+        Task<ExamsUserDTO> GetExamsForUserBL(int userId);
     }
 }

@@ -1,15 +1,13 @@
 ﻿using Exam_DTO.DTO;
-using ExamDL.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ExamBL
 {
     public interface IPersonalDetailesRepository
     {
-        Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsBL();
-        Task<List<PersonalDetaile>> GetAllPersonDetailsByIdBl(int iduser);
-        Task<bool> AddPersonalDelailesBL(PersonalDetaileDTO Id_User);
-        Task<bool> UpdatePersonalDetailesBL(PersonalDetaile Id_User);
+        Task<PersonalDetaileDTO> AddPersonalDelailesBL(PersonalDetaileDTO Id_User);
+        Task<List<PersonalDetaileDTO>> GetPersonalDetailsBL();
+        Task<PersonalDetaileDTO> GetPersonalLogin(string email, string userpassword);
+        Task<PersonalDetaileDTO> GetPersonDetailsByIdBl(int iduser);
+        Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO Id_User);
     }
 }

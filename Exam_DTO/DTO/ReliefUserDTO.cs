@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamDL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Exam_DTO.DTO
 {
-    class ReliefUserDTO
+   public class ReliefUserDTO
     {
         public int IdReliefUser { get; set; }
 
@@ -21,5 +22,11 @@ namespace Exam_DTO.DTO
         public bool ReliefStatus { get; set; }
 
         public string ReliefFile { get; set; } = null!;
+
+        public virtual ReliefReason IdReliefReasonsNavigation { get; set; } = null!;
+
+        public virtual ReliefType IdReliefTypesNavigation { get; set; } = null!;
+
+        public virtual PersonalDetaile IdUserNavigation { get; set; } = null!;
     }
 }

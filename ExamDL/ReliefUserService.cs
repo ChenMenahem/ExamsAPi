@@ -10,22 +10,26 @@ namespace ExamDL
 {
     public class ReliefUserService : IReliefUserService
     {
-        ExamsContext _Relief = new ExamsContext();
+        ExamsContext _examsContext;
+        public ReliefUserService(ExamsContext examsContext)
+        {
+            _examsContext = examsContext;
+        }
         //פוקצית GET
-        public async Task<List<ReliefUser>> GetAllPersonRelief(int userId)
+        public async Task<ReliefUser> GetPersonRelief(int userId)
         {
             try
             {
-                List<ReliefUser> result = await _Relief.ReliefUsers
+                ReliefUser result = await _examsContext.ReliefUsers
                     .Where(u => u.IdUser == userId)
-                    .ToListAsync();
+                    .FirstOrDefaultAsync();
                 return result;
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"An error occurred while fetching relief data: {ex.Message}");
-                
+
                 throw;
             }
         }
@@ -33,15 +37,15 @@ namespace ExamDL
         {
             try
             {
-                List<ReliefType> result = await _Relief.ReliefTypes
+                List<ReliefType> result = await _examsContext.ReliefTypes
                     .ToListAsync();
                 return result;
             }
             catch (Exception ex)
             {
-            
+
                 Console.WriteLine($"An error occurred while fetching relief types: {ex.Message}");
-              
+
                 throw;
             }
         }
@@ -50,15 +54,15 @@ namespace ExamDL
         {
             try
             {
-                List<ReliefReason> result = await _Relief.ReliefReasons
+                List<ReliefReason> result = await _examsContext.ReliefReasons
                     .ToListAsync();
                 return result;
             }
             catch (Exception ex)
             {
-            
+
                 Console.WriteLine($"An error occurred while fetching relief reasons: {ex.Message}");
-               
+
                 throw;
             }
         }
@@ -67,19 +71,19 @@ namespace ExamDL
         {
             try
             {
-                var Relief = await _Relief.ReliefUsers.AddAsync(Reliefuser);
-                await _Relief.SaveChangesAsync();
+                var Relief = await _examsContext.ReliefUsers.AddAsync(Reliefuser);
+                await _examsContext.SaveChangesAsync();
                 return true;
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"An error occurred while adding relief: {ex.Message}");
-              
+
                 throw;
             }
         }
 
-     
+
     }
 }

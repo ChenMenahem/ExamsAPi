@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,78 +15,82 @@ namespace ExamBL
 {
     public class ReliefUserRepository : IReliefUserRepository
     {
-        IReliefUserService _ReliefDL;
+        IReliefUserService _ReliefUsersDL;
+        IMapper _mapper;
 
-        public ReliefUserRepository(IReliefUserService reliefDL)
+        public ReliefUserRepository(ReliefUserService reliefDL, IMapper mapper)
         {
-            _ReliefDL = reliefDL;
+            _ReliefUsersDL = reliefDL;
+            _mapper = mapper;
         }
 
 
-        public ReliefUserRepository()
-        {
-            _ReliefDL = new ReliefUserService();
-        }
 
-        public async Task<List<ReliefUser>> GetAllPersonReliefBL(int userId)
+        public async Task<ReliefUserDTO> GetPersonReliefBL(int userId)
         {
             try
             {
-                List<ReliefUser> relief = await _ReliefDL.GetAllPersonRelief(userId);
-                return relief;
+                ReliefUser relief = await _ReliefUsersDL.GetPersonRelief(userId);
+                ReliefUserDTO rlDTO = _mapper.Map<ReliefUserDTO>(relief);
+                return rlDTO;
+
             }
             catch (Exception ex)
             {
-               
+
                 Console.WriteLine($"Error in GetAllPersonReliefBL: {ex.Message}");
-                return new List<ReliefUser>(); 
+                return null;
             }
         }
 
-        public async Task<List<ReliefType>> GetAllReliefTypeBL()
+        public async Task<List<RelifTypeDTO>> GetAllReliefTypeBL()
         {
             try
             {
-                List<ReliefType> reliefType = await _ReliefDL.GetAllReliefType();
-                return reliefType;
+                List<ReliefType> reliefType = await _ReliefUsersDL.GetAllReliefType();
+                List<RelifTypeDTO> rlDTO = _mapper.Map<List<RelifTypeDTO>>(reliefType);
+                return rlDTO;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error in GetAllReliefTypeBL: {ex.Message}");
-                return new List<ReliefType>(); 
+                return new List<RelifTypeDTO>();
             }
         }
-        public async Task<List<ReliefReason>> GetallReliefReasonBL()
+        public async Task<List<ReliefReasonDTO>> GetallReliefReasonBL()
         {
             try
             {
-                List<ReliefReason> reliefReason = await _ReliefDL.GetallReliefReason();
-                return reliefReason;
+                List<ReliefReason> reliefReason = await _ReliefUsersDL.GetallReliefReason();
+                List<ReliefReasonDTO> rlDTO = _mapper.Map<List<ReliefReasonDTO>>(reliefReason);
+                return rlDTO;
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"Error in GetallReliefReasonBL: {ex.Message}");
-                return new List<ReliefReason>(); 
+                return new List<ReliefReasonDTO>();
             }
         }
-        public async Task<bool> AddRealif_UserBL(ReliefUser Reliefuser)
+        public async Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser)
         {
             try
             {
-                bool isAdd = await _ReliefDL.AddRealif(Reliefuser);
+                ReliefUser ru = _mapper.Map<ReliefUser>(Reliefuser);
+                bool isAdd = await _ReliefUsersDL.AddRealif(ru);
                 return isAdd;
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"Error in AddRealif_UserBL: {ex.Message}");
-                return false; 
+                return false;
             }
         }
 
     }
 }
+
 
     
 

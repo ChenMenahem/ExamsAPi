@@ -11,23 +11,40 @@ using ExamDL.Models;
 
 namespace ExamBL
 {
-    class ExamsUserRepository : IExamsUserRepository
+    public class ExamsUserRepository : IExamsUserRepository
     {
         IExamsUserService _ExamsUsersDL;
         IMapper _mapper;
 
-        public ExamsUserRepository(IExamsUserService examUserDL)
+        public ExamsUserRepository(IExamsUserService examUserDL , IMapper mapper)
         {
             _ExamsUsersDL = examUserDL;
-            IMapper _mapper;
+            _mapper = mapper;
         }
 
-        public async Task<List<ExamsUser>> GetAllExamsForUserBL(int userId)
+        public async Task<List<ExamsUserDTO>> GetAllExamsBL()
         {
             try
             {
-                List<ExamsUser> ExamsForUser = await _ExamsUsersDL.GetAllExamsForUser(userId);
-                return ExamsForUser;
+                List<ExamsUser> ExamsForUser = await _ExamsUsersDL.GetAllExams();
+                List<ExamsUserDTO> exuDTO = _mapper.Map<List<ExamsUserDTO>>(ExamsForUser);
+                return exuDTO;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllExamsForUserBL: {ex.Message}");
+                return null;
+            }
+
+        }
+
+        public async Task<ExamsUserDTO> GetExamsForUserBL(int userId)
+        {
+            try
+            {
+                ExamsUser ExamsForUser = await _ExamsUsersDL.GetAllExamsForUser(userId);
+                ExamsUserDTO exuDTO = _mapper.Map<ExamsUserDTO>(ExamsForUser);
+                return exuDTO;
             }
             catch (Exception ex)
             {
@@ -36,17 +53,19 @@ namespace ExamBL
             }
         }
 
-        public async Task<bool> Add(ExamsUser examsUser)
+        public async Task<ExamsUserDTO> Add(ExamsUserDTO examsUser)
         {
             try
             {
-                bool isAdd = await _ExamsUsersDL.Add(examsUser);
-                return isAdd;
+                ExamsUser ex = _mapper.Map<ExamsUser>(examsUser);
+                ExamsUser isAdd = await _ExamsUsersDL.Add(ex);
+                ExamsUserDTO exu = _mapper.Map<ExamsUserDTO>(isAdd);
+                return exu;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error in Add: {ex.Message}");
-                return false;
+                return null;
             }
         }
 

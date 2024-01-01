@@ -39,5 +39,7 @@ namespace Exam_DTO.DTO
         public string UrlFilesId { get; set; } = null!;
 
         public string UserPassword { get; set; } = null!;
+
+        public int? Permission { get; set; }
     }
 }

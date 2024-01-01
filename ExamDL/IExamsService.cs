@@ -3,7 +3,7 @@ namespace ExamDL
 {
     public interface IExamsService
     {
-        Task<List<Exam>> GetAllPersonExams(global::System.Int32 Idexam);
+        Task<Exam> GetExamsById(int Idexam);
         Task<List<Exam>> GetExams();
     }
 }

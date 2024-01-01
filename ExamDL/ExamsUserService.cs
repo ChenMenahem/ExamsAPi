@@ -10,24 +10,28 @@ namespace ExamDL
 {
     public class ExamsUserService : IExamsUserService
     {
-        ExamsContext _ExamsContext = new ExamsContext();
+        ExamsContext _examsContext;
+        public ExamsUserService(ExamsContext examsContext)
+        {
+            _examsContext = examsContext;
+        }
 
 
         public async Task<List<ExamsUser>> GetAllExams()
         {
-            List<ExamsUser> result = await _ExamsContext.ExamsUsers
+            List<ExamsUser> result = await _examsContext.ExamsUsers
                      .ToListAsync();
             return result;
         }
 
 
-        public async Task <List<ExamsUser>> GetAllExamsForUser(int userId)
+        public async Task<ExamsUser> GetAllExamsForUser(int userId)
         {
             try
             {
-                List<ExamsUser> result = await _ExamsContext.ExamsUsers
+                ExamsUser result = await _examsContext.ExamsUsers
                     .Where(u => u.IdUser == userId)
-                    .ToListAsync();
+                    .FirstOrDefaultAsync();
 
                 return result;
             }
@@ -40,13 +44,16 @@ namespace ExamDL
             }
         }
 
-        public async Task<bool> Add(ExamsUser examsUser)
+        public async Task<ExamsUser> Add(ExamsUser examsUser)
         {
             try
             {
-                _ExamsContext.ExamsUsers.Add(examsUser);
-                await _ExamsContext.SaveChangesAsync();
-                return true;
+                 _examsContext.ExamsUsers.AddAsync(examsUser);
+              await  _examsContext.SaveChangesAsync();
+                ExamsUser e = await _examsContext.ExamsUsers
+                    .OrderByDescending(e => e.IdUser)
+                    .FirstOrDefaultAsync();
+                return e;
             }
             catch (Exception ex)
             {

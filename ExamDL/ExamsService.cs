@@ -10,9 +10,12 @@ namespace ExamDL
 {
     public class ExamsService : IExamsService
     {
-        ExamsContext _examsContext = new ExamsContext();
+        ExamsContext _examsContext;
 
-    
+        public ExamsService(ExamsContext examsContext)
+        {
+            _examsContext = examsContext;
+        }
 
         public async Task<List<Exam>> GetExams()
         {
@@ -33,13 +36,13 @@ namespace ExamDL
 
 
 
-        public async Task<List<Exam>> GetAllPersonExams(int Idexam)
+        public async Task<Exam> GetExamsById(int Idexam)
         {
             try
             {
-                List<Exam> result = await _examsContext.Exams
+                Exam result = await _examsContext.Exams
                     .Where(u => u.IdExam == Idexam)
-                    .ToListAsync();
+                    .FirstOrDefaultAsync();
                 return result;
             }
             catch (Exception ex)

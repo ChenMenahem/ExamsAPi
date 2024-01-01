@@ -1,11 +1,12 @@
 ﻿using ExamDL.Models;
+
 namespace ExamDL
 {
     public interface IReliefUserService
     {
-        Task<global::System.Boolean> AddRealif(ReliefUser Reliefuser);
-        Task<List<ReliefUser>> GetAllPersonRelief(global::System.Int32 userId);
+        Task<bool> AddRealif(ReliefUser Reliefuser);
         Task<List<ReliefReason>> GetallReliefReason();
         Task<List<ReliefType>> GetAllReliefType();
+        Task<ReliefUser> GetPersonRelief(int userId);
     }
 }

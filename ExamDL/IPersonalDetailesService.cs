@@ -4,9 +4,10 @@ namespace ExamDL
 {
     public interface IPersonalDetailesService
     {
-        Task<bool> Add(PersonalDetaile personalDetaile);
+        Task<PersonalDetaile> Add(PersonalDetaile personalDetaile);
         Task<List<PersonalDetaile>> GetAllPersonalDetails();
-        Task<PersonalDetaile> GetAllPersonDetailsById(int iduser);
-        Task<bool> Update(PersonalDetaile personalDetaile);
+        Task<PersonalDetaile> GetPersonalLogin(string Email, string UserPassword);
+        Task<PersonalDetaile> GetPersonDetailsById(int iduser);
+        Task<PersonalDetaile> Update(PersonalDetaile personalDetaile);
     }
 }

@@ -1,12 +1,12 @@
-﻿using ExamDL.Models;
+﻿using Exam_DTO.DTO;
 
 namespace ExamBL
 {
     public interface IReliefUserRepository
     {
-        Task<bool> AddRealif_UserBL(ReliefUser Reliefuser);
-        Task<List<ReliefUser>> GetAllPersonReliefBL(int userId);
-        Task<List<ReliefReason>> GetallReliefReasonBL();
-        Task<List<ReliefType>> GetAllReliefTypeBL();
+        Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser);
+        Task<ReliefUserDTO> GetPersonReliefBL(int userId);
+        Task<List<ReliefReasonDTO>> GetallReliefReasonBL();
+        Task<List<RelifTypeDTO>> GetAllReliefTypeBL();
     }
 }

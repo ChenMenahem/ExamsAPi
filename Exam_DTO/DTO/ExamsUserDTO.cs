@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamDL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Exam_DTO.DTO
 {
-    class ExamsUserDTO
+    public class ExamsUserDTO
     {
         public int IdExamUser { get; set; }
 
@@ -25,6 +26,8 @@ namespace Exam_DTO.DTO
         public string? NotesOffice { get; set; }
 
         public string? NotesUser { get; set; }
+
+        
 
     }
 }

@@ -22,26 +22,34 @@ namespace Exams.Contoller
         }
 
         [HttpGet]
-        [Route("GetAllPersonalDetails")]
-        public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsBL()
+        [Route("GetPersonalDetails")]
+        public async Task<List<PersonalDetaileDTO>> GetlPersonalDetailsBL()
         {
-            return await _PersonalDetailsRepository.GetAllPersonalDetailsBL();
+            return await _PersonalDetailsRepository.GetPersonalDetailsBL();
         }
 
         [HttpGet]
         [Route("GetAllPersonDetailsById")]
 
-        public Task<List<PersonalDetaile>> GetAllPersonDetailsByIdBl(int iduser)
+        public Task<PersonalDetaileDTO> GetPersonDetailsByIdBl(int iduser)
         {
-            return  _PersonalDetailsRepository.GetAllPersonDetailsByIdBl( iduser);
-        }
+            return _PersonalDetailsRepository.GetPersonDetailsByIdBl(iduser);
 
+        }
+        [HttpGet]
+        [Route("GetPersonalLogin")]
+
+        public Task<PersonalDetaileDTO> GetPersonalLogin(string email, string userpassword)
+        {
+            return _PersonalDetailsRepository.GetPersonalLogin(email, userpassword);
+
+        }
 
         [HttpPost]
         [Route("AddPersonalDelailes")]
-        public async Task<bool> AddPersonalDelailesBL(PersonalDetaileDTO Id_User)
+        public async Task<PersonalDetaileDTO> AddPersonalDelailesBL(PersonalDetaileDTO Id_User)
         {
-            bool isAddPersonalDetails =await  _PersonalDetailsRepository.AddPersonalDelailesBL(Id_User);
+            PersonalDetaileDTO isAddPersonalDetails =await  _PersonalDetailsRepository.AddPersonalDelailesBL(Id_User);
             return isAddPersonalDetails;
 
         }
@@ -49,10 +57,10 @@ namespace Exams.Contoller
 
         [HttpPut]
         [Route("UpdatePersonalDetail/{PersonalId}")]
-        public async Task<bool> UpdatePersonalDetailesBL(PersonalDetaile Id_User)
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO Id_User)
         {
 
-            bool isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(Id_User);
+            PersonalDetaileDTO isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(Id_User);
             return isUpdate;
         }
     }

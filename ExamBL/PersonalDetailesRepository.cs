@@ -16,27 +16,50 @@ namespace ExamBL
         IPersonalDetailesService _PersonalDetailsDL;
         IMapper _mapper;
 
+
         public PersonalDetailesRepository(IPersonalDetailesService PersonalDetailsDL, IMapper mapper)
         {
             _PersonalDetailsDL = PersonalDetailsDL;
             _mapper = mapper;
 
         }
-        public async Task<List<PersonalDetaile>> GetAllPersonDetailsByIdBl(int iduser)
+        public async Task<PersonalDetaileDTO> GetPersonDetailsByIdBl(int iduser)
         {
             try
             {
-                List<PersonalDetaile> currentUser = await _PersonalDetailsDL.GetAllPersonDetailsById(iduser);
-                return currentUser;
+                PersonalDetaile currentUser = await _PersonalDetailsDL.GetPersonDetailsById(iduser);
+                PersonalDetaileDTO pdDTO = _mapper.Map<PersonalDetaileDTO>(currentUser);
+                return pdDTO;
+
+
+
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"Error in GetAllPersonDetailsByIdBl: {ex.Message}");
-                return null; 
+                return null;
             }
         }
-        public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsBL()
+        public async Task<PersonalDetaileDTO> GetPersonalLogin(string email, string userpassword)
+        {
+            try
+            {
+                PersonalDetaile currentUser = await _PersonalDetailsDL.GetPersonalLogin(email, userpassword);
+                PersonalDetaileDTO pdDTO = _mapper.Map<PersonalDetaileDTO>(currentUser);
+                return pdDTO;
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in GetAllPersonDetailsByIdBl: {ex.Message}");
+                return null;
+            }
+        }
+        public async Task<List<PersonalDetaileDTO>> GetPersonalDetailsBL()
         {
             try
             {
@@ -46,40 +69,48 @@ namespace ExamBL
             }
             catch (Exception ex)
             {
-        
+
                 Console.WriteLine($"Error in GetAllPersonalDetailsBL: {ex.Message}");
-                return null; 
+                return null;
             }
         }
 
-        public async Task<bool> AddPersonalDelailesBL(PersonalDetaileDTO Id_User)
+        public async Task<PersonalDetaileDTO> AddPersonalDelailesBL(PersonalDetaileDTO Id_User)
         {
             try
             {
-                PersonalDetaile pd = _mapper.Map<PersonalDetaile>(Id_User);
-                bool isAddPersonalDetails = await _PersonalDetailsDL.Add(pd);
-                return isAddPersonalDetails;
+                PersonalDetaile pdppp = _mapper.Map<PersonalDetaile>(Id_User);
+
+                PersonalDetaile isAddPersonalDetails = await _PersonalDetailsDL.Add(pdppp);
+                PersonalDetaileDTO pd = _mapper.Map<PersonalDetaileDTO>(isAddPersonalDetails);
+                return pd;
+
+
             }
             catch (Exception ex)
             {
-            
+
                 Console.WriteLine($"Error in AddPersonalDelailesBL: {ex.Message}");
-                return false; 
+                return null;
             }
         }
 
-        public async Task<bool> UpdatePersonalDetailesBL(PersonalDetaile Id_User)
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO Id_User)
         {
             try
             {
-                bool isUpdatePersonalDetailes = await _PersonalDetailsDL.Update(Id_User);
-                return isUpdatePersonalDetailes;
+                 PersonalDetaile pdppp = _mapper.Map<PersonalDetaile>(Id_User);
+                PersonalDetaile isAddPersonalDetails = await _PersonalDetailsDL.Update(pdppp);
+                PersonalDetaileDTO pd = _mapper.Map<PersonalDetaileDTO>(Id_User);
+
+                return pd;
+
             }
             catch (Exception ex)
             {
-         
+
                 Console.WriteLine($"Error in UpdatePersonalDetailesBL: {ex.Message}");
-                return false; 
+                return null;
             }
         }
     }

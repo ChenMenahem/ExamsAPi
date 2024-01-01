@@ -23,12 +23,16 @@ namespace ExamBL
             _mapper = mapper;
         }
 
-        public async Task<List<Exam>> GetExamsBl()
+
+
+        public async Task<List<ExamsDTO>> GetExamsBl()
         {
             try
             {
                 List<Exam> exams = await _ExamsDL.GetExams();
-                return exams;
+                List<ExamsDTO> exDTO = _mapper.Map<List<ExamsDTO>>(exams);
+                return exDTO;
+
             }
             catch (Exception ex)
             {
@@ -37,23 +41,24 @@ namespace ExamBL
             }
         }
 
-        public async Task<List<Exam>> GetAllPersonExamsBL(int Idexam)
+        public async Task<ExamsDTO> GetExamsById(int Idexam)
         {
             try
             {
-                List<Exam> relief = await _ExamsDL.GetAllPersonExams(Idexam);
-                return relief;
+                Exam allexams = await _ExamsDL.GetExamsById(Idexam);
+                ExamsDTO exDTO = _mapper.Map<ExamsDTO>(allexams);
+                return exDTO;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error in GetAllPersonExamsBL: {ex.Message}");
-                return null; 
+                return null;
             }
         }
 
-        
 
-     
+
+
     }
 
 }
