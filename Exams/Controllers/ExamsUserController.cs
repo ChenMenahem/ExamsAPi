@@ -25,7 +25,7 @@ namespace Exams.Controllers
 
         // GET: api/<ExamsUser>
         [HttpGet]
-        [Route("GetAllExamsBL")]
+        [Route("GetAllExams")]
         public async Task<List<ExamsUserDTO>> GetAllExamsBL()
         {
             return await _ExamsUserRepository.GetAllExamsBL();
@@ -34,7 +34,7 @@ namespace Exams.Controllers
 
         // GET api/<ExamsUser>/5
         [HttpGet]
-        [Route("GetExamsForUserBL")]
+        [Route("GetExamsForUser")]
 
         public Task<ExamsUserDTO> GetExamsForUserBL(int userId)
         {

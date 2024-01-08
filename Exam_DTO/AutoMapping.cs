@@ -21,8 +21,9 @@ namespace Exam_DTO
             CreateMap<Exam, ExamsDTO>();
             CreateMap<ExamsUserDTO, ExamsUser>();
             CreateMap<ExamsUser, ExamsUserDTO>();
-            CreateMap<ReliefUserDTO, ReliefReason>();
-            CreateMap<ReliefReason, ReliefUserDTO>();
+            CreateMap<ReliefUserDTO, ReliefUser>().ReverseMap();
+            CreateMap<ReliefReason, ReliefReasonDTO>().ReverseMap();
+            CreateMap<ReliefType, ReliefTypeDTO>().ReverseMap();
         }
 
 

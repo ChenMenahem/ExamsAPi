@@ -23,9 +23,9 @@ namespace Exams.Contoller
 
         [HttpGet]
         [Route("GetPersonalDetails")]
-        public async Task<List<PersonalDetaileDTO>> GetlPersonalDetailsBL()
+        public async Task<List<PersonalDetaileDTO>> GetlPersonalDetailsByEmp()
         {
-            return await _PersonalDetailsRepository.GetPersonalDetailsBL();
+            return await _PersonalDetailsRepository.GetAllPersonalDetailsEmployeeBL();
         }
 
         [HttpGet]
@@ -56,11 +56,10 @@ namespace Exams.Contoller
 
 
         [HttpPut]
-        [Route("UpdatePersonalDetail/{PersonalId}")]
-        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO Id_User)
+        [Route("UpdatePersonalDetails/{id}")]
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO User)
         {
-
-            PersonalDetaileDTO isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(Id_User);
+            PersonalDetaileDTO isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(id, User);
             return isUpdate;
         }
     }

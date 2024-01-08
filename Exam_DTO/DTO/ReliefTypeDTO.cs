@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exam_DTO.DTO
 {
-    public class RelifTypeDTO
+    public class ReliefTypeDTO
     {
         public int IdRelifeTypes { get; set; }
 

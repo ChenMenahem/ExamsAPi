@@ -23,10 +23,6 @@ namespace Exam_DTO.DTO
 
         public string ReliefFile { get; set; } = null!;
 
-        public virtual ReliefReason IdReliefReasonsNavigation { get; set; } = null!;
-
-        public virtual ReliefType IdReliefTypesNavigation { get; set; } = null!;
-
-        public virtual PersonalDetaile IdUserNavigation { get; set; } = null!;
+        
     }
 }

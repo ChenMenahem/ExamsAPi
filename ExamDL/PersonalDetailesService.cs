@@ -53,12 +53,28 @@ namespace ExamDL
         //    }
         //}
 
-
-        public async Task<List<PersonalDetaile>> GetAllPersonalDetails()
+        public async Task<List<PersonalDetaile>> GetAllPersonalDetailsEmployee()
         {
             try
             {
-                List<PersonalDetaile> result = await _examsContext.PersonalDetailes
+                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 2)
+                     .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching personal details: {ex.Message}");
+
+                throw;
+            }
+        }
+        //אין שימוש כי אין צורך בטבלה של כל הנבחנים אלה נשתמש בפונקציה שנמצאת ב examsusers
+        public async Task<List<PersonalDetaile>> GetAllPersonalDetailsTesters()
+        {
+            try
+            {
+                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 1)
                      .ToListAsync();
                 return result;
             }
@@ -116,25 +132,25 @@ namespace ExamDL
                 {
                     existingPerson.Street = personalDetaile.Street;
                     existingPerson.City = personalDetaile.City;
-                    personalDetaile.Number=personalDetaile.Number;
-                    personalDetaile.IdentityNum = personalDetaile.IdentityNum;  
-                    personalDetaile.BirthDate = personalDetaile.BirthDate;  
+                    personalDetaile.Number = personalDetaile.Number;
+                    personalDetaile.IdentityNum = personalDetaile.IdentityNum;
+                    personalDetaile.BirthDate = personalDetaile.BirthDate;
                     personalDetaile.Email = personalDetaile.Email;
-                    personalDetaile.FirstName = personalDetaile.FirstName;  
-                    personalDetaile.LastName = personalDetaile.LastName;    
-                    personalDetaile.Gender = personalDetaile.Gender;    
+                    personalDetaile.FirstName = personalDetaile.FirstName;
+                    personalDetaile.LastName = personalDetaile.LastName;
+                    personalDetaile.Gender = personalDetaile.Gender;
                     personalDetaile.HouseNum = personalDetaile.HouseNum;
                     personalDetaile.MaritalStatus = personalDetaile.MaritalStatus;
                     personalDetaile.Number = personalDetaile.Number;
                     personalDetaile.UserPassword = personalDetaile.UserPassword;
-                    personalDetaile.Zip=personalDetaile.Zip;
+                    personalDetaile.Zip = personalDetaile.Zip;
 
                     _examsContext.Update(existingPerson);
 
                     await _examsContext.SaveChangesAsync();
                 }
 
-                return null;
+                return personalDetaile;
             }
             catch (Exception ex)
             {

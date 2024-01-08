@@ -25,7 +25,7 @@ namespace Exams.Controllers
 
         // GET api/<ReliefUserController>/5
         [HttpGet]
-        [Route("GetAllPersonGetPersonReliefBLReliefBL")]
+        [Route("GetPersonRelief")]
 
         public Task<ReliefUserDTO> GetPersonReliefBL(int iduser)
         {
@@ -34,7 +34,7 @@ namespace Exams.Controllers
         }
         [HttpGet]
         [Route("GetAllReliefTypeBL")]
-        public async Task<List<RelifTypeDTO>> GetAllReliefTypeBL()
+        public async Task<List<ReliefTypeDTO>> GetAllReliefTypeBL()
         {
             return await _ReliefUserRepository.GetAllReliefTypeBL();
         }

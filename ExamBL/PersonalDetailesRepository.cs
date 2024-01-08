@@ -59,11 +59,26 @@ namespace ExamBL
                 return null;
             }
         }
-        public async Task<List<PersonalDetaileDTO>> GetPersonalDetailsBL()
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsTestersBL()
         {
             try
             {
-                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalDetails();
+                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalDetailsTesters();
+                List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
+                return pdDTO;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in GetAllPersonalDetailsBL: {ex.Message}");
+                return null;
+            }
+        }
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsEmployeeBL()
+        {
+            try
+            {
+                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalDetailsEmployee();
                 List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
                 return pdDTO;
             }
@@ -95,15 +110,15 @@ namespace ExamBL
             }
         }
 
-        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO Id_User)
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO user)
         {
             try
             {
-                 PersonalDetaile pdppp = _mapper.Map<PersonalDetaile>(Id_User);
-                PersonalDetaile isAddPersonalDetails = await _PersonalDetailsDL.Update(pdppp);
-                PersonalDetaileDTO pd = _mapper.Map<PersonalDetaileDTO>(Id_User);
+                PersonalDetaile personalDetaile = _mapper.Map<PersonalDetaile>(id);
+                PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile);
+                PersonalDetaileDTO personalDetaileUpdateDTO = _mapper.Map<PersonalDetaileDTO>(personalDetaileUpdate);
 
-                return pd;
+                return personalDetaileUpdateDTO;
 
             }
             catch (Exception ex)

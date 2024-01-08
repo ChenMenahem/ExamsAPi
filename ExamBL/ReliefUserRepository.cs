@@ -18,7 +18,7 @@ namespace ExamBL
         IReliefUserService _ReliefUsersDL;
         IMapper _mapper;
 
-        public ReliefUserRepository(ReliefUserService reliefDL, IMapper mapper)
+        public ReliefUserRepository(IReliefUserService reliefDL, IMapper mapper)
         {
             _ReliefUsersDL = reliefDL;
             _mapper = mapper;
@@ -43,18 +43,18 @@ namespace ExamBL
             }
         }
 
-        public async Task<List<RelifTypeDTO>> GetAllReliefTypeBL()
+        public async Task<List<ReliefTypeDTO>> GetAllReliefTypeBL()
         {
             try
             {
                 List<ReliefType> reliefType = await _ReliefUsersDL.GetAllReliefType();
-                List<RelifTypeDTO> rlDTO = _mapper.Map<List<RelifTypeDTO>>(reliefType);
+                List<ReliefTypeDTO> rlDTO = _mapper.Map<List<ReliefTypeDTO>>(reliefType);
                 return rlDTO;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error in GetAllReliefTypeBL: {ex.Message}");
-                return new List<RelifTypeDTO>();
+                return new List<ReliefTypeDTO>();
             }
         }
         public async Task<List<ReliefReasonDTO>> GetallReliefReasonBL()

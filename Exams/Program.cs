@@ -20,8 +20,8 @@ builder.Services.AddScoped<IExamsRepository, ExamsRepository>();
 builder.Services.AddScoped<IExamsService, ExamsService>();
 builder.Services.AddScoped<IExamsUserRepository, ExamsUserRepository>();
 builder.Services.AddScoped<IExamsUserService, ExamsUserService>();
-//builder.Services.AddScoped<IReliefUserRepository, ReliefUserRepository>();
-//builder.Services.AddScoped<IReliefUserService, ReliefUserService>();
+builder.Services.AddScoped<IReliefUserRepository, ReliefUserRepository>();
+builder.Services.AddScoped<IReliefUserService, ReliefUserService>();
 builder.Services.AddDbContext<ExamsContext>(options =>
          options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
