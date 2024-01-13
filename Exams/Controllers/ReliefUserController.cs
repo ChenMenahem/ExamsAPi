@@ -33,20 +33,20 @@ namespace Exams.Controllers
 
         }
         [HttpGet]
-        [Route("GetAllReliefTypeBL")]
+        [Route("GetAllReliefType")]
         public async Task<List<ReliefTypeDTO>> GetAllReliefTypeBL()
         {
             return await _ReliefUserRepository.GetAllReliefTypeBL();
         }
         [HttpGet]
-        [Route("GetallReliefReasonBL")]
+        [Route("GetallReliefReason")]
         public async Task<List<ReliefReasonDTO>> GetallReliefReasonBL()
         {
             return await _ReliefUserRepository.GetallReliefReasonBL();
         }
 
         [HttpPost]
-        [Route("AddRealif_UserBL")]
+        [Route("AddRealif_User")]
         public async Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser)
         {
             bool isAddReliefUser = await _ReliefUserRepository.AddRealif_UserBL(Reliefuser);

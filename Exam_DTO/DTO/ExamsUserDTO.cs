@@ -9,8 +9,7 @@ namespace Exam_DTO.DTO
 {
     public class ExamsUserDTO
     {
-        public int IdExamUser { get; set; }
-
+      
         public int IdUser { get; set; }
 
         public int IdExam { get; set; }

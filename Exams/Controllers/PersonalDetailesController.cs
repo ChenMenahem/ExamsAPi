@@ -57,9 +57,9 @@ namespace Exams.Contoller
 
         [HttpPut]
         [Route("UpdatePersonalDetails/{id}")]
-        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO User)
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO User, int id)
         {
-            PersonalDetaileDTO isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(id, User);
+            PersonalDetaileDTO isUpdate = await _PersonalDetailsRepository.UpdatePersonalDetailesBL(User, id);
             return isUpdate;
         }
     }

@@ -9,6 +9,6 @@ namespace ExamDL
         Task<List<PersonalDetaile>> GetAllPersonalDetailsTesters();
         Task<PersonalDetaile> GetPersonalLogin(string Email, string UserPassword);
         Task<PersonalDetaile> GetPersonDetailsById(int iduser);
-        Task<PersonalDetaile> Update(PersonalDetaile personalDetaile);
+        Task<PersonalDetaile> Update(PersonalDetaile personalDetaile,int id);
     }
 }

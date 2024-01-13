@@ -68,7 +68,24 @@ namespace ExamBL
                 return null;
             }
         }
+        public async Task<ExamsUserDTO> UpdateOfficeBL(ExamsUserDTO examUserToUpdateDTO, int id)
+        {
+            try
+            {
+                ExamsUser examUserToUpdate = _mapper.Map<ExamsUser>(examUserToUpdateDTO);
+                ExamsUser updatedUserExam = await _ExamsUsersDL.Update(examUserToUpdate,id);
+                ExamsUserDTO updatedUserExamDTO = _mapper.Map<ExamsUserDTO>(updatedUserExam);
 
+                return updatedUserExamDTO;
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in UpdatePersonalDetailesBL: {ex.Message}");
+                return null;
+            }
+        }
 
 
 

@@ -63,6 +63,35 @@ namespace ExamDL
                 throw;
             }
         }
+        public async Task<ExamsUser> Update(ExamsUser examUserToUpdate,int id)
+        {
+            try
+            {
+                ExamsUser updateOffice = _examsContext.ExamsUsers.FirstOrDefault(x => x.IdExamUser == id);
+
+                if (updateOffice != null)
+                {
+
+                    updateOffice.Class = examUserToUpdate.Class;
+                    updateOffice.Grade = examUserToUpdate.Grade;
+                    updateOffice.ExamsStatus = examUserToUpdate.ExamsStatus;
+                   
+
+                    _examsContext.Update(updateOffice);
+
+                    await _examsContext.SaveChangesAsync();
+                }
+
+                return examUserToUpdate;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred during update: {ex.Message}");
+
+                throw;
+            }
+        }
 
 
     }

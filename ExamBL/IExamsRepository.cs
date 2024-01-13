@@ -6,5 +6,6 @@ namespace ExamBL
     {
         Task<ExamsDTO> GetExamsById(int Idexam);
         Task<List<ExamsDTO>> GetExamsBl();
+        
     }
 }

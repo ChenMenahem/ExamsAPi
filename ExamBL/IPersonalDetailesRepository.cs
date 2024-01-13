@@ -9,6 +9,6 @@ namespace ExamBL
         Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsTestersBL();
         Task<PersonalDetaileDTO> GetPersonalLogin(string email, string userpassword);
         Task<PersonalDetaileDTO> GetPersonDetailsByIdBl(int iduser);
-        Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO user);
+        Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO User,int id);
     }
 }

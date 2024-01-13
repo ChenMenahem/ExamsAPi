@@ -109,14 +109,13 @@ namespace ExamBL
                 return null;
             }
         }
-
-        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO user)
+        public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(PersonalDetaileDTO User, int id)
         {
             try
             {
-                PersonalDetaile personalDetaile = _mapper.Map<PersonalDetaile>(id);
-                PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile);
-                PersonalDetaileDTO personalDetaileUpdateDTO = _mapper.Map<PersonalDetaileDTO>(personalDetaileUpdate);
+                PersonalDetaile personalDetaile = _mapper.Map<PersonalDetaile>(User);
+                PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile,id);
+                PersonalDetaileDTO personalDetaileUpdateDTO = _mapper.Map<PersonalDetaileDTO>(User);
 
                 return personalDetaileUpdateDTO;
 
@@ -128,6 +127,26 @@ namespace ExamBL
                 return null;
             }
         }
+
+
+        //public async Task<PersonalDetaileDTO> UpdatePersonalDetailesBL(int id, PersonalDetaileDTO user)
+        //{
+        //    try
+        //    {
+        //        PersonalDetaile personalDetaile = _mapper.Map<PersonalDetaile>(id);
+        //        PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile);
+        //        PersonalDetaileDTO personalDetaileUpdateDTO = _mapper.Map<PersonalDetaileDTO>(personalDetaileUpdate);
+
+        //        return personalDetaileUpdateDTO;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        Console.WriteLine($"Error in UpdatePersonalDetailesBL: {ex.Message}");
+        //        return null;
+        //    }
+        //}
     }
 
 }

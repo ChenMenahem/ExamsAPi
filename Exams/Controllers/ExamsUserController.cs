@@ -18,7 +18,7 @@ namespace Exams.Controllers
     {
         IExamsUserRepository _ExamsUserRepository;
 
-            public ExamsUserController(IExamsUserRepository examsUserRepository)
+        public ExamsUserController(IExamsUserRepository examsUserRepository)
         {
             _ExamsUserRepository = examsUserRepository;
         }
@@ -30,7 +30,7 @@ namespace Exams.Controllers
         {
             return await _ExamsUserRepository.GetAllExamsBL();
         }
-    
+
 
         // GET api/<ExamsUser>/5
         [HttpGet]
@@ -52,12 +52,14 @@ namespace Exams.Controllers
             return isAddPersonalDetails;
 
         }
-
-        // PUT api/<ExamsUser>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("ExamsUser/{id}")]
+        public async Task<ExamsUserDTO> updateUserExam([FromBody] ExamsUserDTO examUserToUpdateDTO, int id)
         {
+            ExamsUserDTO isUpdate = await _ExamsUserRepository.UpdateOfficeBL(examUserToUpdateDTO, id);
+            return isUpdate;
         }
+    
 
         // DELETE api/<ExamsUser>/5
         [HttpDelete("{id}")]
@@ -66,3 +68,4 @@ namespace Exams.Controllers
         }
     }
 }
+
