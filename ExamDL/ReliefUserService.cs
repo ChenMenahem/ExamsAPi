@@ -16,13 +16,13 @@ namespace ExamDL
             _examsContext = examsContext;
         }
         //פוקצית GET
-        public async Task<ReliefUser> GetPersonRelief(int userId)
+        public async Task<List<ReliefUser>> GetPersonRelief(int userId)
         {
             try
             {
-                ReliefUser result = await _examsContext.ReliefUsers
+                List<ReliefUser> result = await _examsContext.ReliefUsers
                     .Where(u => u.IdUser == userId)
-                    .FirstOrDefaultAsync();
+                    .ToListAsync();
                 return result;
             }
             catch (Exception ex)

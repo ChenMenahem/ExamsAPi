@@ -26,12 +26,12 @@ namespace ExamBL
 
 
 
-        public async Task<ReliefUserDTO> GetPersonReliefBL(int userId)
+        public async Task<List<ReliefUserDTO>> GetPersonReliefBL(int userId)
         {
             try
             {
-                ReliefUser relief = await _ReliefUsersDL.GetPersonRelief(userId);
-                ReliefUserDTO rlDTO = _mapper.Map<ReliefUserDTO>(relief);
+                List<ReliefUser> relief = await _ReliefUsersDL.GetPersonRelief(userId);
+                List<ReliefUserDTO> rlDTO = _mapper.Map<List<ReliefUserDTO>>(relief);
                 return rlDTO;
 
             }

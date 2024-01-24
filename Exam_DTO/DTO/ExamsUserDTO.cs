@@ -1,4 +1,5 @@
 ﻿using ExamDL.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,19 @@ namespace Exam_DTO.DTO
         public string? NotesOffice { get; set; }
 
         public string? NotesUser { get; set; }
+        public ExamsDTO IdExamNavigation { get; set; }
+        public ExamsUserDTO()
+        {
+                
+        }
+        public ExamsUserDTO(ExamsDTO IdExamNavigation)
+        {
+            this.IdExamNavigation= IdExamNavigation;
+        }
 
-        
+
+
+
 
     }
 }

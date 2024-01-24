@@ -6,7 +6,7 @@ namespace ExamBL
     {
         Task<ExamsUserDTO> Add(ExamsUserDTO examsUser);
         Task<List<ExamsUserDTO>> GetAllExamsBL();
-        Task<ExamsUserDTO> GetExamsForUserBL(int userId);
+        Task<List<ExamsUserDTO>>GetExamsForUserBL(int userId);
         Task<ExamsUserDTO> UpdateOfficeBL(ExamsUserDTO examUserToUpdateDTO, int id);
     }
 }

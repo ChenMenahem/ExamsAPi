@@ -7,6 +7,6 @@ namespace ExamDL
         Task<bool> AddRealif(ReliefUser Reliefuser);
         Task<List<ReliefReason>> GetallReliefReason();
         Task<List<ReliefType>> GetAllReliefType();
-        Task<ReliefUser> GetPersonRelief(int userId);
+        Task<List<ReliefUser>> GetPersonRelief(int userId);
     }
 }

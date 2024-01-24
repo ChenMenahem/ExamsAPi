@@ -36,7 +36,7 @@ namespace Exams.Controllers
         [HttpGet]
         [Route("GetExamsForUser")]
 
-        public Task<ExamsUserDTO> GetExamsForUserBL(int userId)
+        public Task<List<ExamsUserDTO>> GetExamsForUser(int userId)
         {
             return _ExamsUserRepository.GetExamsForUserBL(userId);
 

@@ -38,12 +38,12 @@ namespace ExamBL
 
         }
 
-        public async Task<ExamsUserDTO> GetExamsForUserBL(int userId)
+        public async Task<List<ExamsUserDTO>> GetExamsForUserBL(int userId)
         {
             try
             {
-                ExamsUser ExamsForUser = await _ExamsUsersDL.GetAllExamsForUser(userId);
-                ExamsUserDTO exuDTO = _mapper.Map<ExamsUserDTO>(ExamsForUser);
+               List< ExamsUser >ExamsForUser = await _ExamsUsersDL.GetAllExamsForUser(userId);
+                List<ExamsUserDTO >exuDTO = _mapper.Map<List<ExamsUserDTO>>(ExamsForUser);
                 return exuDTO;
             }
             catch (Exception ex)

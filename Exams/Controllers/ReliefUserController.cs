@@ -27,7 +27,7 @@ namespace Exams.Controllers
         [HttpGet]
         [Route("GetPersonRelief")]
 
-        public Task<ReliefUserDTO> GetPersonReliefBL(int iduser)
+        public Task<List<ReliefUserDTO>> GetPersonReliefBL(int iduser)
         {
             return _ReliefUserRepository.GetPersonReliefBL(iduser);
 

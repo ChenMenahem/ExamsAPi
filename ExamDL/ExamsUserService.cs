@@ -11,6 +11,7 @@ namespace ExamDL
     public class ExamsUserService : IExamsUserService
     {
         ExamsContext _examsContext;
+
         public ExamsUserService(ExamsContext examsContext)
         {
             _examsContext = examsContext;
@@ -19,19 +20,27 @@ namespace ExamDL
 
         public async Task<List<ExamsUser>> GetAllExams()
         {
-            List<ExamsUser> result = await _examsContext.ExamsUsers
-                     .ToListAsync();
-            return result;
+            try {
+                List<ExamsUser> result = await _examsContext.ExamsUsers
+         // Include related data from the Exam navigation property
+      .ToListAsync();
+                return result;
+                // Include related data from the Exam navigation property
+        }
+            catch (Exception ex) {
+                return null;
+            }
         }
 
 
-        public async Task<ExamsUser> GetAllExamsForUser(int userId)
+        public async Task<List<ExamsUser>> GetAllExamsForUser(int userId)
         {
             try
             {
-                ExamsUser result = await _examsContext.ExamsUsers
+              List< ExamsUser> result = await _examsContext.ExamsUsers
                     .Where(u => u.IdUser == userId)
-                    .FirstOrDefaultAsync();
+                     .Include(eu => eu.IdExamNavigation)
+                    .ToListAsync();
 
                 return result;
             }
