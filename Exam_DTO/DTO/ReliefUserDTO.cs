@@ -23,6 +23,8 @@ namespace Exam_DTO.DTO
 
         public string ReliefFile { get; set; } = null!;
 
-        
+        public ReliefReasonDTO? ReliefReasons { get; set; }
+
+
     }
 }

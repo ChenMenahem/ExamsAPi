@@ -22,6 +22,7 @@ namespace ExamDL
             {
                 List<ReliefUser> result = await _examsContext.ReliefUsers
                     .Where(u => u.IdUser == userId)
+                     .Include(eu => eu.IdReliefReasonsNavigation)
                     .ToListAsync();
                 return result;
             }

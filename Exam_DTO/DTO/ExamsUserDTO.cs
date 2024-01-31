@@ -26,7 +26,7 @@ namespace Exam_DTO.DTO
         public string? NotesOffice { get; set; }
 
         public string? NotesUser { get; set; }
-        public ExamsDTO IdExamNavigation { get; set; }
+        public ExamsDTO? IdExamNavigation { get; set; }
         public ExamsUserDTO()
         {
                 
