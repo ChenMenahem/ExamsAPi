@@ -22,7 +22,9 @@ namespace ExamDL
         {
             try {
                 List<ExamsUser> result = await _examsContext.ExamsUsers
-         // Include related data from the Exam navigation property
+                     .Include(eu => eu.IdUserNavigation)
+                     .Include(eu => eu.IdExamNavigation)
+      // Include related data from the Exam navigation property
       .ToListAsync();
                 return result;
                 // Include related data from the Exam navigation property
@@ -40,6 +42,7 @@ namespace ExamDL
               List< ExamsUser> result = await _examsContext.ExamsUsers
                     .Where(u => u.IdUser == userId)
                      .Include(eu => eu.IdExamNavigation)
+                     .Include(eu => eu.IdUserNavigation)
                     .ToListAsync();
 
                 return result;

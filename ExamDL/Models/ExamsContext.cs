@@ -116,9 +116,9 @@ public partial class ExamsContext : DbContext
 
         modelBuilder.Entity<ReliefType>(entity =>
         {
-            entity.HasKey(e => e.IdRelifeTypes);
+            entity.HasKey(e => e.IdReliefTypes);
 
-            entity.Property(e => e.IdRelifeTypes).HasColumnName("Id_RelifeTypes");
+            entity.Property(e => e.IdReliefTypes).HasColumnName("Id_ReliefTypes");
             entity.Property(e => e.ReliefTypes).HasMaxLength(30);
         });
 

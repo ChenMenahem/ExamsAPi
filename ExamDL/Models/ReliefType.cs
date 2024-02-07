@@ -5,7 +5,7 @@ namespace ExamDL.Models;
 
 public partial class ReliefType
 {
-    public int IdRelifeTypes { get; set; }
+    public int IdReliefTypes { get; set; }
 
     public string ReliefTypes { get; set; } = null!;
 

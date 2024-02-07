@@ -13,7 +13,7 @@ public partial class PersonalDetaile
 
     public string LastName { get; set; } = null!;
 
-    public DateTime BirthDate { get; set; }
+    public DateOnly BirthDate { get; set; }
 
     public string MaritalStatus { get; set; } = null!;
 

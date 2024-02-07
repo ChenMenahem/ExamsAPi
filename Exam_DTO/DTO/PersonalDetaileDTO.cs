@@ -16,7 +16,7 @@ namespace Exam_DTO.DTO
 
         public string LastName { get; set; } = null!;
 
-        public DateTime BirthDate { get; set; }
+        public DateOnly BirthDate { get; set; }
 
         public string MaritalStatus { get; set; } = null!;
 
@@ -41,5 +41,7 @@ namespace Exam_DTO.DTO
         public string UserPassword { get; set; } = null!;
 
         public int? Permission { get; set; }
+
+
     }
 }

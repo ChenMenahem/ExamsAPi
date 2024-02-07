@@ -8,8 +8,12 @@ namespace Exam_DTO.DTO
 {
     public class ReliefTypeDTO
     {
-        public int IdRelifeTypes { get; set; }
+        //public int? IdReliefTypes { get; set; }
 
-        public string ReliefTypes { get; set; } = null!;
+        public int? idReliefTypes { get; set; }
+
+        public string? ReliefTypes { get; set; } = null!;
+
+        
     }
 }

@@ -23,6 +23,7 @@ namespace ExamDL
                 List<ReliefUser> result = await _examsContext.ReliefUsers
                     .Where(u => u.IdUser == userId)
                      .Include(eu => eu.IdReliefReasonsNavigation)
+                     .Include(rtu => rtu.IdReliefTypesNavigation)
                     .ToListAsync();
                 return result;
             }
@@ -39,6 +40,7 @@ namespace ExamDL
             try
             {
                 List<ReliefType> result = await _examsContext.ReliefTypes
+
                     .ToListAsync();
                 return result;
             }
