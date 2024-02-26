@@ -21,7 +21,14 @@ namespace Exams.Controllers
         {
             _ReliefUserRepository = reliefUserRepository;
         }
-        
+        [HttpGet]
+        [Route("GetAllReliefs")]
+
+        public Task<List<ReliefUserDTO>> GetAllReliefsBl()
+        {
+            return _ReliefUserRepository.GetAllReliefsBl();
+
+        }
 
         // GET api/<ReliefUserController>/5
         [HttpGet]

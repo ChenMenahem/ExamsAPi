@@ -16,6 +16,25 @@ namespace ExamDL
             _examsContext = examsContext;
         }
         //פוקצית GET
+        public async Task<List<ReliefUser>> GetAllReliefs()
+        {
+            try
+            {
+                List<ReliefUser> result = await _examsContext.ReliefUsers
+                     .Include(eu => eu.IdUserNavigation)
+                     .Include(eu => eu.IdReliefTypesNavigation)
+                     .Include(eu => eu.IdReliefReasonsNavigation)
+                     .ToListAsync();
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
         public async Task<List<ReliefUser>> GetPersonRelief(int userId)
         {
             try

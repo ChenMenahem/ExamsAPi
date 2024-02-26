@@ -27,6 +27,8 @@ namespace Exam_DTO.DTO
 
         public ReliefTypeDTO? ReliefTypes { get; set; }
 
+        public PersonalDetaileDTO? PersonalDetaile { get; set; }
+
 
     }
 }

@@ -23,7 +23,21 @@ namespace ExamBL
             _ReliefUsersDL = reliefDL;
             _mapper = mapper;
         }
+        public async Task<List<ReliefUserDTO>> GetAllReliefsBl()
+        {
+            try
+            {
+                List<ReliefUser> AllReliefes = await _ReliefUsersDL.GetAllReliefs();
+                List<ReliefUserDTO> arlDTO = _mapper.Map<List<ReliefUserDTO>>(AllReliefes);
+                return arlDTO;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllExamsForUserBL: {ex.Message}");
+                return null;
+            }
 
+        }
 
 
         public async Task<List<ReliefUserDTO>> GetPersonReliefBL(int userId)

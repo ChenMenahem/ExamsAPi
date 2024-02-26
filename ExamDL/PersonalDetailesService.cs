@@ -69,12 +69,13 @@ namespace ExamDL
                 throw;
             }
         }
-        //אין שימוש כי אין צורך בטבלה של כל הנבחנים אלה נשתמש בפונקציה שנמצאת ב examsusers
+   
         public async Task<List<PersonalDetaile>> GetAllPersonalDetailsTesters()
         {
             try
             {
-                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 1)
+                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 1).Include(p => p.ExamsUsers)
+                    .ThenInclude(eu => eu.IdExamNavigation)
                      .ToListAsync();
                 return result;
             }

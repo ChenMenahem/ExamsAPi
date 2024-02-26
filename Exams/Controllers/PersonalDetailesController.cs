@@ -22,10 +22,18 @@ namespace Exams.Contoller
         }
 
         [HttpGet]
-        [Route("GetPersonalDetails")]
+        [Route("GetPersonalDetailsEmp")]
         public async Task<List<PersonalDetaileDTO>> GetlPersonalDetailsByEmp()
         {
             return await _PersonalDetailsRepository.GetAllPersonalDetailsEmployeeBL();
+        }
+
+
+        [HttpGet]
+        [Route("GetPersonalDetailsTesters")]
+        public async Task<List<PersonalDetaileDTO>> GetPersonalDetailsTesters()
+        {
+            return await _PersonalDetailsRepository.GetAllPersonalDetailsTestersBL();
         }
 
         [HttpGet]

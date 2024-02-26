@@ -12,14 +12,13 @@ namespace Exam_DTO
             CreateMap<PersonalDetaile, PersonalDetaileDTO>();
             CreateMap<ExamsDTO, Exam>();
             CreateMap<Exam, ExamsDTO>();
-            CreateMap<ExamsUserDTO, ExamsUser>().ReverseMap()
-             .ForMember(dest => dest.PersonalDetaile, opt => opt.MapFrom(src => src.IdUserNavigation))  
-
-             .ReverseMap();
+            CreateMap<ExamsUserDTO, ExamsUser>().ReverseMap();
+             //.ForMember(dest => dest.IdExamNavigation, opt => opt.MapFrom(src => src.IdUserNavigation)).ReverseMap();
 
             CreateMap<ReliefUserDTO, ReliefUser>()
                 .ForMember(dest => dest.IdReliefReasonsNavigation, opt => opt.MapFrom(src => src.ReliefReasons))
                 .ForMember(dest => dest.IdReliefTypesNavigation, opt => opt.MapFrom(src => src.ReliefTypes))
+                .ForMember(dest => dest.IdUserNavigation, opt => opt.MapFrom(src => src.PersonalDetaile))
                 .ReverseMap();
 
             CreateMap<ReliefReason, ReliefReasonDTO>().ReverseMap();

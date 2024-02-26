@@ -5,8 +5,9 @@ namespace ExamBL
     public interface IReliefUserRepository
     {
         Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser);
-        Task<List<ReliefUserDTO>> GetPersonReliefBL(int userId);
         Task<List<ReliefReasonDTO>> GetallReliefReasonBL();
+        Task<List<ReliefUserDTO>> GetAllReliefsBl();
         Task<List<ReliefTypeDTO>> GetAllReliefTypeBL();
+        Task<List<ReliefUserDTO>> GetPersonReliefBL(int userId);
     }
 }

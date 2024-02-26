@@ -27,17 +27,17 @@ namespace Exam_DTO.DTO
 
         public string? NotesUser { get; set; }
 
-        public PersonalDetaileDTO? PersonalDetaile { get; set; }
+        //public PersonalDetaileDTO? PersonalDetaile { get; set; }
 
         public ExamsDTO? IdExamNavigation { get; set; }
-        public ExamsUserDTO()
-        {
+        //public ExamsUserDTO()
+        //{
                 
-        }
-        public ExamsUserDTO(ExamsDTO IdExamNavigation)
-        {
-            this.IdExamNavigation= IdExamNavigation;
-        }
+        //}
+        //public ExamsUserDTO(ExamsDTO IdExamNavigation)
+        //{
+        //    this.IdExamNavigation= IdExamNavigation;
+        //}
 
      
 
