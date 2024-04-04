@@ -4,7 +4,7 @@ namespace ExamDL
 {
     public interface IReliefUserService
     {
-        Task<bool> AddRealif(ReliefUser Reliefuser);
+        Task<bool> AddRealif(List <ReliefUser> reliefuser);
         Task<List<ReliefReason>> GetallReliefReason();
         Task<List<ReliefUser>> GetAllReliefs();
         Task<List<ReliefType>> GetAllReliefType();

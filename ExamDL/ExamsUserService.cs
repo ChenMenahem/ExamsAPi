@@ -105,6 +105,21 @@ namespace ExamDL
             }
         }
 
+        public async Task<bool> AddExams(List<ExamsUser> examsUser)
+        {
+            try
+            {
+                _examsContext.ExamsUsers.AddRangeAsync(examsUser);
+                await _examsContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
 
+                Console.WriteLine($"An error occurred while adding an exams user: {ex.Message}");
+
+                throw;
+            }
+        }
     }
 }

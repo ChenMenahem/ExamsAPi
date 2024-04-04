@@ -87,9 +87,21 @@ namespace ExamBL
             }
         }
 
-
-
-
+        public async Task<bool> AddExams(List<ExamsUserDTO> examsUser)
+        {
+            try
+            {
+                List<ExamsUser> ex = _mapper.Map<List<ExamsUser>>(examsUser);
+                return await _ExamsUsersDL.AddExams(ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Add: {ex
+                    
+                    .Message}");
+                return false;
+            }
+        }
     }
 }
 

@@ -89,13 +89,15 @@ namespace ExamDL
             }
         }
 
-        public async Task<bool> AddRealif(ReliefUser Reliefuser)
+        public async Task<bool> AddRealif(List <ReliefUser> reliefuser)
         {
             try
             {
-                var Relief = await _examsContext.ReliefUsers.AddAsync(Reliefuser);
+                _examsContext.ReliefUsers.AddRangeAsync(reliefuser);
                 await _examsContext.SaveChangesAsync();
                 return true;
+
+
             }
             catch (Exception ex)
             {
@@ -105,7 +107,22 @@ namespace ExamDL
                 throw;
             }
         }
+        //public async Task<bool> AddRealif(ReliefUser Reliefuser)
+        //{
+        //    try
+        //    {
+        //        var Relief = await _examsContext.ReliefUsers.AddAsync(Reliefuser);
+        //        await _examsContext.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
 
+        //        Console.WriteLine($"An error occurred while adding relief: {ex.Message}");
+
+        //        throw;
+        //    }
+        //}
 
     }
 }

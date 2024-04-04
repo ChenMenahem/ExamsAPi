@@ -86,11 +86,11 @@ namespace ExamBL
                 return new List<ReliefReasonDTO>();
             }
         }
-        public async Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser)
+        public async Task<bool> AddRealif_UserBL(List <ReliefUserDTO> reliefuser)
         {
             try
             {
-                ReliefUser ru = _mapper.Map<ReliefUser>(Reliefuser);
+                List <ReliefUser> ru = _mapper.Map <List<ReliefUser>>(reliefuser);
                 bool isAdd = await _ReliefUsersDL.AddRealif(ru);
                 return isAdd;
             }

@@ -54,9 +54,9 @@ namespace Exams.Controllers
 
         [HttpPost]
         [Route("AddRealif_User")]
-        public async Task<bool> AddRealif_UserBL(ReliefUserDTO Reliefuser)
+        public async Task<bool> AddRealif_UserBL(List <ReliefUserDTO> reliefuser)
         {
-            bool isAddReliefUser = await _ReliefUserRepository.AddRealif_UserBL(Reliefuser);
+            bool isAddReliefUser = await _ReliefUserRepository.AddRealif_UserBL(reliefuser);
             return isAddReliefUser;
         }
             // PUT api/<ReliefUserController>/5

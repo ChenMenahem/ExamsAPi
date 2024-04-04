@@ -52,6 +52,16 @@ namespace Exams.Controllers
             return isAddPersonalDetails;
 
         }
+
+        // POST api/<ExamsUser>
+        [HttpPost]
+        [Route("AddExams")]
+
+        public async Task<bool> AddExams(List<ExamsUserDTO> examsUser)
+        {
+            return await _ExamsUserRepository.AddExams(examsUser);
+        }
+
         [HttpPut]
         [Route("ExamsUser/{id}")]
         public async Task<ExamsUserDTO> updateUserExam([FromBody] ExamsUserDTO examUserToUpdateDTO, int id)
