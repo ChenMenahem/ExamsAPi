@@ -56,10 +56,28 @@ namespace ExamBL
             }
         }
 
+        public async Task<ExamsDTO> AddExamBL(ExamsDTO Id_Exam)
+        {
+            try
+            {
+                Exam ex = _mapper.Map<Exam>(Id_Exam);
 
+                Exam isAddExam = await _ExamsDL.Add(ex);
+                ExamsDTO exx = _mapper.Map<ExamsDTO>(isAddExam);
+                return exx;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in AddPersonalDelailesBL: {ex.Message}");
+                return null;
+            }
+        }
 
 
     }
-
 }
+
 

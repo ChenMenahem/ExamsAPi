@@ -44,6 +44,7 @@ namespace Exam_DTO.DTO
         public int? Permission { get; set; }
 
         public virtual ICollection<ExamsUserDTO> ?ExamsUsers { get; set; }
+        public virtual ICollection<ReliefUserDTO>? ReliefUsers { get; set; }
 
     }
 }

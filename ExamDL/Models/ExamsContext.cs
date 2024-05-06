@@ -15,6 +15,8 @@ public partial class ExamsContext : DbContext
     {
     }
 
+    public virtual DbSet<DueDate> DueDates { get; set; }
+
     public virtual DbSet<Exam> Exams { get; set; }
 
     public virtual DbSet<ExamsUser> ExamsUsers { get; set; }
@@ -35,6 +37,21 @@ public partial class ExamsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<DueDate>(entity =>
+        {
+            entity.HasKey(e => e.IdDueDate);
+
+            entity.Property(e => e.IdDueDate).HasColumnName("Id_dueDate");
+            entity.Property(e => e.Description).HasMaxLength(100);
+            entity.Property(e => e.DueDate1).HasColumnName("DueDate");
+            entity.Property(e => e.IdExam).HasColumnName("Id_exam");
+
+            entity.HasOne(d => d.IdExamNavigation).WithMany(p => p.DueDates)
+                .HasForeignKey(d => d.IdExam)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_DueDates_Exams");
+        });
+
         modelBuilder.Entity<Exam>(entity =>
         {
             entity.HasKey(e => e.IdExam);
@@ -53,6 +70,7 @@ public partial class ExamsContext : DbContext
             entity.Property(e => e.IdExamUser).HasColumnName("Id_examUser");
             entity.Property(e => e.Class).HasMaxLength(30);
             entity.Property(e => e.Grade).HasMaxLength(30);
+            entity.Property(e => e.IdDueDate).HasColumnName("Id_dueDate");
             entity.Property(e => e.IdExam).HasColumnName("Id_Exam");
             entity.Property(e => e.IdFileStudy)
                 .HasMaxLength(50)
@@ -61,15 +79,20 @@ public partial class ExamsContext : DbContext
             entity.Property(e => e.NotesOffice).HasMaxLength(30);
             entity.Property(e => e.NotesUser).HasMaxLength(30);
 
+            entity.HasOne(d => d.IdDueDateNavigation).WithMany(p => p.ExamsUsers)
+                .HasForeignKey(d => d.IdDueDate)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Exams_Use__Id_du__2CF2ADDF");
+
             entity.HasOne(d => d.IdExamNavigation).WithMany(p => p.ExamsUsers)
                 .HasForeignKey(d => d.IdExam)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Exams_Use__Id_Ex__52593CB8");
+                .HasConstraintName("FK_Exams_Users_Exam");
 
             entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.ExamsUsers)
                 .HasForeignKey(d => d.IdUser)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Exams_Use__Id_Us__5165187F");
+                .HasConstraintName("FK_Exams_Users_Users");
         });
 
         modelBuilder.Entity<Permission>(entity =>

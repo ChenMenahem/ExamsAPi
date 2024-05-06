@@ -24,6 +24,7 @@ namespace ExamDL
                 List<ExamsUser> result = await _examsContext.ExamsUsers
                      .Include(eu => eu.IdUserNavigation)
                      .Include(eu => eu.IdExamNavigation)
+                     .Include(eu => eu.IdDueDateNavigation)
       // Include related data from the Exam navigation property
       .ToListAsync();
                 return result;
@@ -41,8 +42,9 @@ namespace ExamDL
             {
               List< ExamsUser> result = await _examsContext.ExamsUsers
                     .Where(u => u.IdUser == userId)
-                     .Include(eu => eu.IdExamNavigation)
-                     .Include(eu => eu.IdUserNavigation)
+                    .Include(eu => eu.IdExamNavigation)
+                    .Include(eu => eu.IdUserNavigation)
+                     .Include(eu => eu.IdDueDateNavigation)
                     .ToListAsync();
 
                 return result;

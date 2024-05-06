@@ -23,6 +23,10 @@ public partial class ExamsUser
 
     public string? NotesUser { get; set; }
 
+    public int IdDueDate { get; set; }
+
+    public virtual DueDate IdDueDateNavigation { get; set; } = null!;
+
     public virtual Exam IdExamNavigation { get; set; } = null!;
 
     public virtual PersonalDetaile IdUserNavigation { get; set; } = null!;

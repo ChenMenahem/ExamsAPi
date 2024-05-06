@@ -39,12 +39,13 @@ namespace Exams.Controllers
         {
             return await _ExamsRepository.GetExamsById(Idexam);
         }
-
-        // POST api/<ExamsController>
         [HttpPost]
-
-        public void Post([FromBody] string value)
+        [Route("AddExam")]
+        public async Task<ExamsDTO> AddExamBL(ExamsDTO Id_Exam)
         {
+            ExamsDTO isAddExam = await _ExamsRepository.AddExamBL(Id_Exam);
+            return isAddExam;
+
         }
 
         // PUT api/<ExamsController>/5

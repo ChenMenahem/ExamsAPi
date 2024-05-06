@@ -30,16 +30,23 @@ namespace Exam_DTO.DTO
         //public PersonalDetaileDTO? PersonalDetaile { get; set; }
 
         public ExamsDTO? IdExamNavigation { get; set; }
+
+        public DueDateDTO IdDueDateNavigation { get; set; } = null!;
+
+        //public DueDateDTO? IdDueDate { get; set; }
+        //public virtual ICollection<DueDateDTO> DueDates { get; set; } = new List<DueDateDTO>();
+
+
         //public ExamsUserDTO()
         //{
-                
+
         //}
         //public ExamsUserDTO(ExamsDTO IdExamNavigation)
         //{
         //    this.IdExamNavigation= IdExamNavigation;
         //}
 
-     
+
 
 
 

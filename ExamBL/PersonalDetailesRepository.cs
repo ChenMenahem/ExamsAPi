@@ -74,6 +74,36 @@ namespace ExamBL
                 return null;
             }
         }
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalReliefReasonsTestersBL()
+        {
+            try
+            {
+                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalReliefReasonsTesters();
+                List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
+                return pdDTO;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in GetAllPersonalDetailsBL: {ex.Message}");
+                return null;
+            }
+        }
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalReliefTypesTestersBL()
+        {
+            try
+            {
+                List<PersonalDetaile> personalsDetailes = await _PersonalDetailsDL.GetAllPersonalReliefTypesTesters();
+                List<PersonalDetaileDTO> pdDTO = _mapper.Map<List<PersonalDetaileDTO>>(personalsDetailes);
+                return pdDTO;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Error in GetAllPersonalDetailsBL: {ex.Message}");
+                return null;
+            }
+        }
         public async Task<List<PersonalDetaileDTO>> GetAllPersonalDetailsEmployeeBL()
         {
             try
@@ -114,7 +144,7 @@ namespace ExamBL
             try
             {
                 PersonalDetaile personalDetaile = _mapper.Map<PersonalDetaile>(User);
-                PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile,id);
+                PersonalDetaile personalDetaileUpdate = await _PersonalDetailsDL.Update(personalDetaile, id);
                 PersonalDetaileDTO personalDetaileUpdateDTO = _mapper.Map<PersonalDetaileDTO>(User);
 
                 return personalDetaileUpdateDTO;

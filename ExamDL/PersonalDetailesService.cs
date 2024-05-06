@@ -69,7 +69,7 @@ namespace ExamDL
                 throw;
             }
         }
-   
+
         public async Task<List<PersonalDetaile>> GetAllPersonalDetailsTesters()
         {
             try
@@ -123,9 +123,45 @@ namespace ExamDL
                 return null;
             }
         }
+        public async Task<List<PersonalDetaile>> GetAllPersonalReliefTypesTesters()
+        {
+            try
+            {
+                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 1).Include(p => p.ReliefUsers)
+                    .ThenInclude(eu => eu.IdReliefTypesNavigation)
+                     .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching personal details: {ex.Message}");
+
+                throw;
+            }
+        }
+
+        public async Task<List<PersonalDetaile>> GetAllPersonalReliefReasonsTesters()
+        {
+            try
+            {
+                List<PersonalDetaile> result = await _examsContext.PersonalDetailes.Where(x => x.Permission == 1).Include(p => p.ReliefUsers)
+                    .ThenInclude(eu => eu.IdReliefReasonsNavigation)
+                     .ToListAsync();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"An error occurred while fetching personal details: {ex.Message}");
+
+                throw;
+            }
+        }
         public async Task<PersonalDetaile> Update(PersonalDetaile personalDetaile, int id)
         {
-            try            {
+            try
+            {
                 PersonalDetaile existingPerson = _examsContext.PersonalDetailes.FirstOrDefault(x => x.IdUser == id);
 
                 if (existingPerson != null)

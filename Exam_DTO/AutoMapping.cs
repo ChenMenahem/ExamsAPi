@@ -13,7 +13,7 @@ namespace Exam_DTO
             CreateMap<ExamsDTO, Exam>();
             CreateMap<Exam, ExamsDTO>();
             CreateMap<ExamsUserDTO, ExamsUser>().ReverseMap();
-             //.ForMember(dest => dest.IdExamNavigation, opt => opt.MapFrom(src => src.IdUserNavigation)).ReverseMap();
+            //.ForMember(dest => dest.IdExamNavigation, opt => opt.MapFrom(src => src.IdUserNavigation)).ReverseMap();
 
             CreateMap<ReliefUserDTO, ReliefUser>()
                 .ForMember(dest => dest.IdReliefReasonsNavigation, opt => opt.MapFrom(src => src.ReliefReasons))
@@ -23,6 +23,8 @@ namespace Exam_DTO
 
             CreateMap<ReliefReason, ReliefReasonDTO>().ReverseMap();
             CreateMap<ReliefType, ReliefTypeDTO>().ReverseMap();
+            CreateMap<ReliefUserDTO, ReliefUser>().ReverseMap();
+            CreateMap<DueDateDTO, DueDate>().ReverseMap();
         }
     }
 }

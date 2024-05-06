@@ -24,6 +24,7 @@ namespace Exams.Contoller
         [HttpGet]
         [Route("GetPersonalDetailsEmp")]
         public async Task<List<PersonalDetaileDTO>> GetlPersonalDetailsByEmp()
+        
         {
             return await _PersonalDetailsRepository.GetAllPersonalDetailsEmployeeBL();
         }
@@ -35,6 +36,21 @@ namespace Exams.Contoller
         {
             return await _PersonalDetailsRepository.GetAllPersonalDetailsTestersBL();
         }
+
+        [HttpGet]
+        [Route("GetAllPersonalReliefTypesTesters")]
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalReliefTypesTesters()
+        {
+            return await _PersonalDetailsRepository.GetAllPersonalReliefTypesTestersBL();
+        }
+
+        [HttpGet]
+        [Route("GetAllPersonalReliefReasonsTesters")]
+        public async Task<List<PersonalDetaileDTO>> GetAllPersonalReliefReasonsTesters()
+        {
+            return await _PersonalDetailsRepository.GetAllPersonalReliefReasonsTestersBL();
+        }
+
 
         [HttpGet]
         [Route("GetAllPersonDetailsById")]

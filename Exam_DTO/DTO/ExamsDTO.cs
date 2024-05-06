@@ -22,5 +22,7 @@ namespace Exam_DTO.DTO
 
         public double Cost { get; set; }
 
+        public virtual ICollection<DueDateDTO> ?DueDates { get; set; } = new List<DueDateDTO>();
+
     }
 }

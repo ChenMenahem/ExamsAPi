@@ -4,8 +4,8 @@ namespace ExamBL
 {
     public interface IExamsRepository
     {
-        Task<ExamsDTO> GetExamsById(int Idexam);
+        Task<ExamsDTO> AddExamBL(ExamsDTO Id_Exam);
         Task<List<ExamsDTO>> GetExamsBl();
-        
+        Task<ExamsDTO> GetExamsById(int Idexam);
     }
 }

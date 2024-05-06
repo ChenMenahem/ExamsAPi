@@ -21,15 +21,15 @@ namespace ExamDL
         {
             try
             {
-                List<Exam> result = await _examsContext.Exams
+                List<Exam> result = await _examsContext.Exams.Include(e => e.DueDates)
                     .ToListAsync();
                 return result;
             }
             catch (Exception ex)
             {
-                
+
                 Console.WriteLine($"An error occurred while fetching exams: {ex.Message}");
-          
+
                 throw;
             }
         }
@@ -47,10 +47,28 @@ namespace ExamDL
             }
             catch (Exception ex)
             {
-              
+
                 Console.WriteLine($"An error occurred while fetching person exams: {ex.Message}");
-           
+
                 throw;
+            }
+        }
+        public async Task<Exam> Add(Exam exam)
+        {
+            try
+            {
+                await _examsContext.Exams.AddAsync(exam);
+                _examsContext.SaveChanges();
+                //שליפה של האוביקט האחרון שהוכנס
+                Exam e = await _examsContext.Exams
+                    .OrderByDescending(e => e.IdExam)
+                    .FirstOrDefaultAsync();
+                return e;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return null;
             }
         }
 
